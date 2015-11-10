@@ -3,7 +3,7 @@
 class: CommandLineTool
 
 description: |
-Filter reads from a paired end SAM or BAM file (only outputs paired reads)
+  Filter reads from a paired end SAM or BAM file (only outputs paired reads)
 
 dct:creator:
   foaf:name: Andy Yang
