@@ -2,39 +2,35 @@
 
 class: CommandLineTool
 
-description: |
-  Filter reads from a paired end SAM or BAM file (only outputs paired reads)
-
 dct:creator:
   foaf:name: Andy Yang
-  foaf:mbox: "mailto:ayang@oicr.on.ca"
-
-cwlVersion: draft-3
+  foaf:mbox: mailto:ayang@oicr.on.ca
+cwlVersion: v1.0
 
 requirements:
-  - class: DockerRequirement
-    dockerPull: "quay.io/cancercollaboratory/dockstore-tool-ubu-sam-filter"
-
+- class: DockerRequirement
+  dockerPull: quay.io/cancercollaboratory/dockstore-tool-ubu-sam-filter
 inputs:
-  - id: "#in"
+  out:
+    type: string
+    inputBinding:
+      position: 2
+      prefix: --out
+    doc: Required output sam or bam file
+  in:
     type: File
-    description: "Required input sam or bam file"
     inputBinding:
       position: 1
-      prefix: "--in"
-
-  - id: "#out"
-    type: string 
-    description: "Required output sam or bam file"
-    inputBinding:
-      position:  2
-      prefix: "--out"
-
+      prefix: --in
+    doc: Required input sam or bam file
 outputs:
-  - id: "#out"
+  out:
     type: File
-    description: "Required output sam or bam file"
     outputBinding:
       glob: $(inputs.out)
 
-baseCommand: ["java" , "-jar" , "/opt/ubu/ubu.jar" , "sam-filter"]
+    doc: Required output sam or bam file
+baseCommand: [java, -jar, /opt/ubu/ubu.jar, sam-filter]
+doc: |
+  Filter reads from a paired end SAM or BAM file (only outputs paired reads)
+
