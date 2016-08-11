@@ -1,0 +1,7 @@
+{
+  "in": {
+    "path": "test.sam",
+    "class": "File"
+  },
+  "out": "out.sam"
+}
